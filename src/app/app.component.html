@@ -55,6 +55,8 @@
 
      <h1>Question 2</h1>
      <form [formGroup]="question2From">
+          4 space separated integers
+          <br>
           <mat-form-field appearance="fill">
                <mat-label>N M X Y</mat-label>
                <input matInput
@@ -63,8 +65,6 @@
                       [required]="true"
                       placeholder="N M X Y">
           </mat-form-field>
-          <br>
-          {{question2From.controls['Numbers'].value}}
           <br>
           <mat-form-field appearance="fill">
                <mat-label>Array</mat-label>
@@ -75,10 +75,15 @@
                       placeholder="A = [...]">
           </mat-form-field>
           <br>
-          {{question2From.controls['Array'].value}}
           <button mat-raised-button
                   color="primary"
                   (click)="ok()">OK</button>
+          <div *ngIf="isLoading">
+               <mat-spinner></mat-spinner>
+          </div>
+          <div *ngIf="!isLoading">
+               {{result}}
+          </div>
      </form>
 </div>
 
